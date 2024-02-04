@@ -21,16 +21,8 @@ const Price = ( { product }: { product: ProductType }) => {
     useCartStore.persist.rehydrate()
   },[])
 
-  useEffect(() => {
-    // if(product.options[selected].additionalPrice){
-    //   setTotal(
-         
-    //     quantity * (product.price + product.options[selected].additionalPrice)
-        
-    //   );
-    // }
-    //quantity * (product.options[selected].additionalPrice ? product.price + product.options[selected].additionalPrice : product.price)
-    setTotal(quantity * (product.options[selected].additionalPrice ? product.price + product.options[selected].additionalPrice : product.price))
+  useEffect(() => {   
+    setTotal(quantity * (parseInt(product.price.toString()) + parseInt(product.options[selected].additionalPrice.toString())))
   }, [quantity, selected, product]);
 
   const handleCart=()=>{
